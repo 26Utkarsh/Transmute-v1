@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Serve static frontend files
-app.use(express.static(path.join(__dirname, '../frontend')));
+// FIXED: Your frontend files are in the root directory, so we go one level up from /backend
+app.use(express.static(path.join(__dirname, '..')));
 
 // API Routes
 app.use('/api', routes);
@@ -26,5 +26,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
